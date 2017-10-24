@@ -36,7 +36,7 @@ function parserExampleElements(elements, element, block, filename) {
 	const values = elementParser.parse(element.content, element.source);
 	app.log.debug('apiexample.path',values.path);
 	if (schemas[values.schema]) {
-		const data = fs.readFileSync( path.join(path.dirname(filename), values.path), 'utf8').toString();
+		const data = fs.readFileSync( path.join(process.cwd(), values.path), 'utf8').toString();
 		element = schemas[values.schema](data, values.element, values.title);
 	}
 	elements.push(element);
